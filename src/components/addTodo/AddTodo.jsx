@@ -4,8 +4,6 @@ const AddTodo = ({ add, data }) => {
 	const [value, setValue] = useState("");
 	const id = useRef(0);
 
-	console.log(id);
-
 	const handleChange = (e) => {
 		setValue(e.target.value);
 	};

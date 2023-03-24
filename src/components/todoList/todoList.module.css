@@ -9,3 +9,7 @@
 	font-size: 16px;
 	cursor: pointer;
 }
+
+.listDot {
+	list-style: none;
+}
