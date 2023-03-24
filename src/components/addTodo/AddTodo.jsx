@@ -1,29 +1,30 @@
 import React, { useState, useRef, useEffect } from "react";
+import { v4 as uuid4 } from "uuid";
 
 const AddTodo = ({ add, data }) => {
-	const [value, setValue] = useState("");
-	const id = useRef(0);
+    const [value, setValue] = useState("");
+    const id = useRef(0);
 
-	const handleChange = (e) => {
-		setValue(e.target.value);
-	};
+    const handleChange = (e) => {
+        setValue(e.target.value);
+    };
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		add([...data, { id: ++id.current, text: value, status: "active" }]);
-		setValue(" ");
-	};
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        add([...data, { id: uuid4(), text: value, status: "active" }]);
+        setValue(" ");
+    };
 
-	useEffect(() => {
-		console.log(value);
-	}, [value]);
+    useEffect(() => {
+        console.log(value);
+    }, [value]);
 
-	return (
-		<form>
-			<input type="text" onChange={handleChange} value={value} />
-			<button onClick={handleSubmit}>Add</button>
-		</form>
-	);
+    return (
+        <form>
+            <input type="text" onChange={handleChange} value={value} />
+            <button onClick={handleSubmit}>Add</button>
+        </form>
+    );
 };
 
 export default AddTodo;
