@@ -1,0 +1,11 @@
+.wrap {
+	display: flex;
+	align-items: center;
+}
+
+.btn {
+	background-color: white;
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+}

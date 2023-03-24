@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const AddTodo = ({ add, data }) => {
-	const [value, setValue] = useState();
+	const [value, setValue] = useState("");
+	const id = useRef(0);
+
+	console.log(id);
 
 	const handleChange = (e) => {
 		setValue(e.target.value);
 	};
 
-	// id 동적으로 변하게 처리
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		add([...data, { id: 3, text: value }]);
+		add([...data, { id: ++id.current, text: value, status: "active" }]);
 		setValue(" ");
 	};
+
+	useEffect(() => {
+		console.log(value);
+	}, [value]);
 
 	return (
 		<form>
