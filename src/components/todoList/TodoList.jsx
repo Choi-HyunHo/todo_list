@@ -3,21 +3,36 @@ import AddTodo from "../addTodo/AddTodo";
 import style from "./todoList.module.css";
 import { MdOutlineDeleteForever } from "react-icons/md";
 
-const TodoList = () => {
-	const [todos, setTodos] = useState([]);
+const TodoList = ({ filter }) => {
+	const [todos, setTodos] = useState([
+		{
+			id: "1",
+			text: "공부하자",
+			status: "active",
+		},
+	]);
 
 	const handleDelete = (id) => {
 		const item = todos.filter((item) => item.id !== id);
 		setTodos(item);
 	};
 
-	console.log(todos);
+	// 필터링
+	function filtered(todos, filter) {
+		if (filter === "all") {
+			return todos;
+		}
+
+		return todos.filter((item) => item.status === filter);
+	}
+
+	const filterList = filtered(todos, filter);
 
 	return (
 		<>
 			<ul>
-				{todos &&
-					todos.map((item) => (
+				{filterList &&
+					filterList.map((item) => (
 						<div key={item.id} className={style.wrap}>
 							<li>{item.text}</li>
 							<button
