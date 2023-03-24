@@ -31,9 +31,15 @@ body {
     box-shadow: -2px 14px 12px 1px rgba(0, 0, 0, 0.52);
     -webkit-box-shadow: -2px 14px 12px 1px rgba(0, 0, 0, 0.52);
     -moz-box-shadow: -2px 14px 12px 1px rgba(0, 0, 0, 0.52);
+    overflow: hidden;
 }
 
 ul {
     list-style: none;
     padding: 0;
+}
+
+button {
+    outline: none;
+    border: none;
 }
