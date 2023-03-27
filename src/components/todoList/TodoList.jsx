@@ -41,11 +41,11 @@ const TodoList = ({ filter }) => {
     const filterList = filtered(todos, filter);
 
     return (
-        <>
-            <ul>
+        <div className={style.container}>
+            <ul className={style.list}>
                 {filterList &&
                     filterList.map((item) => (
-                        <div key={item.id} className={style.wrap}>
+                        <li key={item.id}>
                             <input
                                 type="checkbox"
                                 checked={item.status === "end"}
@@ -54,18 +54,15 @@ const TodoList = ({ filter }) => {
                                     handleUpdate(e.target.checked, item)
                                 }
                             />
-                            <li>{item.text}</li>
-                            <button
-                                className={style.btn}
-                                onClick={() => handleDelete(item.id)}
-                            >
+                            <span>{item.text}</span>
+                            <button onClick={() => handleDelete(item.id)}>
                                 <MdOutlineDeleteForever />
                             </button>
-                        </div>
+                        </li>
                     ))}
             </ul>
             <AddTodo add={setTodos} data={todos} />
-        </>
+        </div>
     );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import style from "./AddTodo.module.css";
 import { v4 as uuid4 } from "uuid";
 
 const AddTodo = ({ add, data }) => {
@@ -20,9 +21,16 @@ const AddTodo = ({ add, data }) => {
     }, [value]);
 
     return (
-        <form>
-            <input type="text" onChange={handleChange} value={value} />
-            <button onClick={handleSubmit}>Add</button>
+        <form className={style.form}>
+            <input
+                className={style.input}
+                type="text"
+                onChange={handleChange}
+                value={value}
+            />
+            <button className={style.button} onClick={handleSubmit}>
+                Add
+            </button>
         </form>
     );
 };
