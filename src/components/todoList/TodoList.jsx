@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddTodo from "../addTodo/AddTodo";
 import style from "./todoList.module.css";
-import { MdOutlineDeleteForever } from "react-icons/md";
+import { FaTrashAlt } from "react-icons/fa";
 
 const TodoList = ({ filter }) => {
     const [status, setStatus] = useState("active");
@@ -45,8 +45,9 @@ const TodoList = ({ filter }) => {
             <ul className={style.list}>
                 {filterList &&
                     filterList.map((item) => (
-                        <li key={item.id}>
+                        <li className={style.todo} key={item.id}>
                             <input
+                                className={style.checkbox}
                                 type="checkbox"
                                 checked={item.status === "end"}
                                 readOnly
@@ -54,10 +55,15 @@ const TodoList = ({ filter }) => {
                                     handleUpdate(e.target.checked, item)
                                 }
                             />
-                            <span>{item.text}</span>
-                            <button onClick={() => handleDelete(item.id)}>
-                                <MdOutlineDeleteForever />
-                            </button>
+                            <span className={style.text}>{item.text}</span>
+                            <span className={style.icon}>
+                                <button
+                                    className={style.button}
+                                    onClick={() => handleDelete(item.id)}
+                                >
+                                    <FaTrashAlt />
+                                </button>
+                            </span>
                         </li>
                     ))}
             </ul>
