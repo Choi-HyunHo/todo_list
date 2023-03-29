@@ -6,10 +6,7 @@ import { modeChange } from "../../store/modeSlice";
 
 const Tab = ({ filters, onChangeFilter, filter }) => {
 	const dispatch = useDispatch();
-
 	const { value } = useSelector((state) => state.mode);
-
-	console.log(value);
 
 	return (
 		<div className={style.header}>
