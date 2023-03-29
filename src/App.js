@@ -1,7 +1,6 @@
-import React, { createContext, useCallback, useState } from "react";
+import React, { createContext, useState } from "react";
 import TodoList from "./components/todoList/TodoList";
 import Tab from "./components/tab/Tab";
-import { useEffect } from "react";
 
 export const DarkModeContext = createContext();
 const filters = ["all", "active", "end"];
@@ -11,12 +10,8 @@ function App() {
 	const [darkMode, setDarkMode] = useState(false);
 
 	const toggleButton = () => {
-		setDarkMode((mode) => !mode);
+		setDarkMode(!darkMode);
 	};
-
-	useEffect(() => {
-		localStorage.setItem("mode", JSON.stringify(darkMode));
-	}, [darkMode]);
 
 	return (
 		<DarkModeContext.Provider value={{ darkMode, toggleButton }}>
