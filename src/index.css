@@ -9,6 +9,10 @@
 	--color-dark-accent: white;
 }
 
+html.add {
+	--color-accent: white;
+}
+
 body {
 	margin: 0 0;
 	width: 100vw;

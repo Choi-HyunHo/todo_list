@@ -20,16 +20,6 @@
 	font-weight: bold;
 }
 
-.darkFilter {
-	font-size: 1.4rem;
-	margin: 0.3rem;
-	text-transform: capitalize;
-	background-color: transparent;
-	color: var(--color-dark-accent);
-	opacity: 0.8;
-	font-weight: bold;
-}
-
 .filter:hover,
 .filter.selected {
 	opacity: 1;

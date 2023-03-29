@@ -8,6 +8,12 @@ const Tab = ({ filters, onChangeFilter, filter }) => {
 	const dispatch = useDispatch();
 	const { value } = useSelector((state) => state.mode);
 
+	if (value === true) {
+		document.documentElement.classList.add("add");
+	} else {
+		document.documentElement.classList.remove("add");
+	}
+
 	return (
 		<div className={style.header}>
 			<MdDarkMode onClick={() => dispatch(modeChange(!value))} />
@@ -15,9 +21,9 @@ const Tab = ({ filters, onChangeFilter, filter }) => {
 				{filters.map((list, index) => (
 					<li key={index}>
 						<button
-							className={`${
-								value !== true ? style.filter : style.darkFilter
-							} ${filter === list && style.selected}`}
+							className={`${style.filter} ${
+								filter === list && style.selected
+							}`}
 							onClick={() => onChangeFilter(list)}
 						>
 							{list}
