@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddTodo from "../addTodo/AddTodo";
 import style from "./todoList.module.css";
 import { FaTrashAlt } from "react-icons/fa";
@@ -6,13 +6,7 @@ import { FaTrashAlt } from "react-icons/fa";
 const TodoList = ({ filter }) => {
     const [status, setStatus] = useState("active");
 
-    const [todos, setTodos] = useState([
-        {
-            id: 1,
-            text: "공부하자",
-            status: status,
-        },
-    ]);
+    const [todos, setTodos] = useState(() => readTodos()); // 리렌더링 될 때마다 useState 가 호출되어서 함수 여러번 호출 막기 위해
 
     const handleDelete = (id) => {
         const item = todos.filter((item) => item.id !== id);
@@ -28,6 +22,15 @@ const TodoList = ({ filter }) => {
             )
         );
     };
+
+    function readTodos() {
+        const todos = localStorage.getItem("todos");
+        return todos ? JSON.parse(todos) : [];
+    }
+
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
 
     // 필터링
     function filtered(todos, filter) {
